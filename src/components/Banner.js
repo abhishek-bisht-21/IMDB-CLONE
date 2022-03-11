@@ -1,15 +1,29 @@
 
 // rfce -> For boiler plate code.
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import Image from '../banner.jpg'
+import axios from 'axios'
+
+
 
 function Banner() {
+    const [movie, setMovie] = useState({})
+    useEffect(function(){
+
+    axios.get("https://api.themoviedb.org/3/trending/movie/week?api_key=23c43a4e9520652b54a64f91a9287dc6")
+    .then((res) => {
+        // console.table(res.data.results)
+        setMovie(res.data.results[1]);
+    })
+
+    }, [])
+
   return (
     <>
     
-    <div className = {`bg-[url(${Image})] h-[40vh] md:h-[60vh] bg-center bg-cover flex items-end justify-center`}>
+    <div className = {`bg-[url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")] h-[40vh] md:h-[60vh] bg-center bg-cover flex items-end justify-center`}>
 
-    	<div className = "text-xl md:text-3xl text-white p-4 bg-gray-900 w-full flex justify-center bg-opacity-50">Spider-Man : No Way Home</div>
+    	<div className = "text-xl md:text-3xl text-white p-4 bg-gray-900 w-full flex justify-center bg-opacity-50">{movie.title}</div>
     </div>
     
     </>
