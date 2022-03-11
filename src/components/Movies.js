@@ -12,8 +12,8 @@ function Movies() {
     const [movies, setMovies] = useState([])
     const [hover,setHover] = useState('')
     const [favourites,setFavourites] = useState([]);
-
     const [page, setPage] = useState(1);
+    
     function goAhead() {
         setPage(page + 1);
     }
@@ -24,7 +24,8 @@ function Movies() {
     }
 
     useEffect(function () {
-
+        let oldFav = localStorage.getItem("imdb");
+        oldFav = JSON.parse(oldFav) || [];    
         axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=23c43a4e9520652b54a64f91a9287dc6&page=${page}`)
             .then((res) => {
                 // console.table(res.data.results)
@@ -36,7 +37,14 @@ function Movies() {
     let add = (movie) => {
         let newArray = [...favourites,movie]
         setFavourites([...newArray])
+        localStorage.setItem("imdb", JSON.stringify(newArray))
 
+    }
+
+        let del = (movie) => {
+        let newArray = favourites.filter((m) => m.id != movie.id)
+        setFavourites([...newArray])
+        localStorage.setItem("imdb", JSON.stringify(newArray))
     }
 
     return <>
@@ -81,7 +89,7 @@ function Movies() {
                 
                 <div className = "absolute top-2 right-2 p-2 bg-gray-800 rounded-xl text-xl cursor-pointer" onClick = {() => add(movie)}>❤️</div> 
                 :
-                <div className = "absolute top-2 right-2 p-2 bg-gray-800 rounded-xl text-xl cursor-pointer" onClick = {() => add(movie)}>❌</div>
+                <div className = "absolute top-2 right-2 p-2 bg-gray-800 rounded-xl text-xl cursor-pointer" onClick = {() => del(movie)}>❌</div>
 
                 }
                 </>       
