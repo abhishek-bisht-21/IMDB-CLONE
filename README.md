@@ -1,3 +1,28 @@
+
+# IMDB CLONE
+
+A front-end React application utilizing the data from a public API to create a Movie App that fetches movie data from the TMDB API which displays information about most popular movies and other categories.
+
+Application Link : https://imdbclone21.netlify.app/
+## Features
+
+- User can view multiple movies according to categories.
+- User can search any movie title.
+- User can view information about each individual movie.
+- User can view IMDB information to that specific movie.
+- User can select their Favourite movies.
+
+
+## Tech Stack
+
+    1) REACT
+    2) JavaScript(ES6) 
+    3) Tailwind CSS
+    4) Local Storage
+    5) REST APIs
+    6) JSX
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +93,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
