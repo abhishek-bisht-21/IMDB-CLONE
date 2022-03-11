@@ -16,6 +16,7 @@ function Favourites() {
   const [search, setSearch] = useState("")
   const [rows, setRows] = useState(5)
   const [curPage, setCurPage] = useState(1)
+
   // for getting movies 
   useEffect(() => {
     let oldFav = localStorage.getItem("imdb");
@@ -39,10 +40,12 @@ function Favourites() {
     setFavourites([...newArray])
     localStorage.setItem("imdb", JSON.stringify(newArray))
   }
+  
   // filtered movies 
   let filteredMovies = []
 
   filteredMovies = curGenre == "All Genres" ? favourites : favourites.filter((movie) => genreids[movie.genre_ids[0]] == curGenre)
+
   // sorting 
   if (rating == 1) {
     filteredMovies = filteredMovies.sort(function (objA, objB) {

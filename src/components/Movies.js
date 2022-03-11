@@ -13,7 +13,7 @@ function Movies() {
     const [hover,setHover] = useState('')
     const [favourites,setFavourites] = useState([]);
     const [page, setPage] = useState(1);
-    
+
     function goAhead() {
         setPage(page + 1);
     }
@@ -24,8 +24,10 @@ function Movies() {
     }
 
     useEffect(function () {
+        // Works everything when page reloads
         let oldFav = localStorage.getItem("imdb");
-        oldFav = JSON.parse(oldFav) || [];    
+        oldFav = JSON.parse(oldFav) || [];
+        // Requesting data    
         axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=23c43a4e9520652b54a64f91a9287dc6&page=${page}`)
             .then((res) => {
                 // console.table(res.data.results)
@@ -36,14 +38,20 @@ function Movies() {
 
     let add = (movie) => {
         let newArray = [...favourites,movie]
+        // Adding in State
         setFavourites([...newArray])
+        // Adding in Local Storage (for reload)
         localStorage.setItem("imdb", JSON.stringify(newArray))
 
     }
 
         let del = (movie) => {
+        
+        // Figuring out Which one to delete 
         let newArray = favourites.filter((m) => m.id != movie.id)
+        // Removing in state
         setFavourites([...newArray])
+        // Removing from Locals
         localStorage.setItem("imdb", JSON.stringify(newArray))
     }
 
