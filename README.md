@@ -1,10 +1,10 @@
 
-# IMDB CLONE
+# IMDB CLONE 🎥
 
 A front-end React application utilizing the data from a public API to create a Movie App that fetches movie data from the TMDB API which displays information about most popular movies and other categories.
 
 Application Link : https://imdbclone21.netlify.app/
-## Features
+## 🪶 Features 
 
 - User can view multiple movies according to categories.
 - User can search any movie title.
@@ -13,7 +13,7 @@ Application Link : https://imdbclone21.netlify.app/
 - User can select their Favourite movies.
 
 
-## Tech Stack
+## ⚡ Tech Stack
 
     1) REACT
     2) JavaScript(ES6) 
